@@ -24,6 +24,8 @@ const ListView = ({ members, gotoEditMemberPage }) => {
 }
 
 ListView.propTypes = {
+  members: PropTypes.arrayOf(PropTypes.object),
+  gotoEditMemberPage: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({

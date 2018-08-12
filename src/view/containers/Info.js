@@ -27,7 +27,19 @@ const Info = ({ firstName, lastName, email, phone, infoChange, validateInfo }) =
   );
 }
 
+const inputFieldsType = {
+  value: PropTypes.string,
+  hasError: PropTypes.bool,
+  placeholder: PropTypes.string
+}
+
 Info.propTypes = {
+  firstName: PropTypes.objectOf(inputFieldsType),
+  lastName: PropTypes.objectOf(inputFieldsType),
+  email: PropTypes.objectOf(inputFieldsType),
+  phone: PropTypes.objectOf(inputFieldsType),
+  infoChange: PropTypes.func.isRequired,
+  validateInfo: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({

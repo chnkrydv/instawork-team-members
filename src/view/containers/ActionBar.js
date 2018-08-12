@@ -39,6 +39,13 @@ const ActionBar = (props) => {
 }
 
 ActionBar.propTypes = {
+  currentPage: PropTypes.string.isRequired,
+  editingMember: PropTypes.object.isRequired,
+  members: PropTypes.arrayOf(PropTypes.object).isRequired,
+  membersCount: PropTypes.number.isRequired,
+  addMember: PropTypes.func.isRequired,
+  updateMember: PropTypes.func.isRequired, 
+  deleteMember: PropTypes.func.isRequired, 
 }
 
 const mapStateToProps = state => ({

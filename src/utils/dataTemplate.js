@@ -9,8 +9,7 @@ const memberDetails = {
   firstName: {
     value: '',
     hasError: false,
-    placeholder: 'first name',
-    pattern: ''
+    placeholder: 'first name'
   },
   lastName: {
     value: '',

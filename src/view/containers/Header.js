@@ -14,14 +14,19 @@ const Header = ({ title, subtitle, currentPage, count, gotoAddMemberPage, discar
       <div
         className={`header__button ${isCloseButton && 'header__button--close'}`}
         onClick={() => isCloseButton ? discardEditing(count) : gotoAddMemberPage()}
-      >
-        +
-      </div>
+        children="+"
+      />
     </div>
   );
 }
 
 Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  currentPage: PropTypes.string.isRequired,
+  count: PropTypes.number.isRequired,
+  gotoAddMemberPage: PropTypes.func.isRequired,
+  discardEditing: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
