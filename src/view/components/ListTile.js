@@ -21,6 +21,7 @@ ListTile.propTypes = {
   email: PropTypes.string.isRequired,
   phone: PropTypes.string.isRequired,
   isAdmin: PropTypes.bool,
+  onClick: PropTypes.func.isRequired
 }
 
 export default ListTile;

@@ -17,7 +17,9 @@ const Textbox = ({ value, onChange, onBlur, hasError, placeholder }) => {
 Textbox.propTypes = {
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  hasError: PropTypes.bool
+  onBlur: PropTypes.func,
+  hasError: PropTypes.bool,
+  placeholder: PropTypes.string,
 }
 
 export default Textbox;

@@ -25,6 +25,8 @@ const Role = ({ isAdmin, roleChange }) => {
 }
 
 Role.propTypes = {
+  isAdmin: PropTypes.bool.isRequired,
+  roleChange: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
