@@ -1,0 +1,101 @@
+/*    Textbox end   */
+.textbox{
+  height: 40px;
+  line-height: 40px;
+  padding: 0 15px;
+  border: 2px solid #eee;
+  border-radius: 5px;
+  display: block;
+  color: #666
+}
+/*    Textbox end   */
+
+
+
+
+/*    ListTile start   */
+.list-tile{
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: repeat(3, 1fr);
+  padding: 30px 0;
+  border-bottom: 2px solid #eee;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.list-tile__profile-pic{
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+}
+
+.list-tile__name{
+  grid-column: 2;
+  grid-row: 1;
+  color: #444;
+  font-weight: 600;
+  padding-bottom: 6px;
+}
+
+.list-tile__phone{
+  grid-column: 2;
+  grid-row: 2;
+  color: #999;
+}
+
+.list-tile__email{
+  grid-column: 2;
+  grid-row: 3;
+  color: #999;
+}
+/*    ListTile end   */
+
+
+
+
+/*    Radio start   */
+.radio {
+  display: grid;
+  grid-template-columns: 11fr 1fr;
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 2px solid #eee;
+  cursor: pointer;
+}
+
+.radio__label{
+  display: inline-block;
+  color: #999;
+  align-self: center;
+}
+
+.radio__label--selected{
+  color: #444;
+}
+
+.radio__circle{
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  border: 2px solid #999;
+  border-radius: 10px;
+  align-self: center;
+  justify-self: end;
+}
+
+.radio__circle--selected{
+  border: 2px solid #4d7bf5;
+}
+
+.radio__circle__dot{
+  margin: 4px;
+  vertical-align: middle;
+  width: 8px;
+  height: 8px;
+  background-color: #4d7bf5;
+  border-radius: 6px;
+}
+/*    Radio end   */

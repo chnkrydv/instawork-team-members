@@ -1,0 +1,32 @@
+.root {
+  margin: auto;
+  min-width: 325px;
+  max-width: 500px;
+  padding: 20px;
+  color: #444;
+}
+
+.hidden {
+  display: none;
+}
+
+.forbidden {
+  cursor: not-allowed;
+}
+
+.red-border {
+  border-color: red;
+}
+
+.button {
+  cursor: pointer;
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+@import url('./components/_components.css');
+@import url('./containers/_containers.css');

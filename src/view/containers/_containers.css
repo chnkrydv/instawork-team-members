@@ -1,0 +1,109 @@
+/*    Header start   */
+.header{
+  border-bottom: 2px solid #eee;
+  padding-bottom: 40px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 11fr 1fr;
+}
+
+.header__title{
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  font-weight: 700;
+  font-size: 26px;
+}
+
+.header__subtitle{
+  grid-column: 1;
+  grid-row: 2;
+  color: #999;
+}
+
+.header__button{
+  grid-column: 2;
+  grid-row: 1;
+  align-self: center;
+  justify-self: end;
+  font-size: 40px;
+  color: #4d7bf5;
+  font-weight: lighter;
+  cursor: pointer;
+}
+
+.header__button--close{
+  transform: rotate(45deg);
+}
+/*    Header end   */
+
+
+
+
+/*    Info start   */
+.info{
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  height: 300px;
+}
+
+.info__header{
+  padding: 20px 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.info__textbox{
+  height: 40px;
+  line-height: 40px;
+  padding: 0 15px;
+  border: 2px solid #eee;
+  border-radius: 5px;
+  display: block;
+  color: #666
+}
+/*    Info end   */
+
+
+
+
+/*    Role start   */
+.role{
+  padding-top: 10px;
+}
+
+.role__header{
+  padding: 10px 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+/*    Role end   */
+
+
+
+
+/*    ActionBar start   */
+.action-bar{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 40px 0;
+}
+
+.action-bar__delete{
+  align-self: center;
+  border: 2px solid #ddd;
+  background-color: white;
+  color: rgb(255, 31, 31);
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.action-bar__save{
+  align-self: center;
+  justify-self: end;
+  background-color: #4d7bf5;
+  color: white;
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+/*    ActionBar end   */
