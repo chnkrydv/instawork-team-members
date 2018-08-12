@@ -11,11 +11,10 @@ const ActionBar = (props) => {
   const isEditMemberPage = currentPage === 'edit-member';
 
   const onDelete = () => deleteMember(editingMember.key, membersCount - 1);
-  const onSave = () => {
-    if(!dataTemplate.didPassSanityCheck(editingMember, members)) return;
-
-    
+  const onSave = () => {    
     if(isAddMemberPage) {
+      if(!dataTemplate.didPassSanityCheck(editingMember, members)) return;
+      
       editingMember.key = getNewKey();
       addMember(editingMember, members, membersCount + 1)
     };
