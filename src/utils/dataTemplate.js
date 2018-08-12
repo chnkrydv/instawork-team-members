@@ -64,6 +64,20 @@ const isTextInputValid = (fieldKey, value) => {
   }
 }
 
+const isAnyTextFieldInvalid = (editingMember) => {
+  return Object.keys(editingMember).some( key => {
+    let value = editingMember[key].value;
+    if(key === 'firstName' || key === 'lastName') return !aValidName(value);
+    if(key === 'email') {
+      console.log('ofTypeEmail(value); ', ofTypeEmail(value))
+      return !ofTypeEmail(value);
+    }
+    if(key === 'phone') return !ofTypePhone(value);
+    
+    return false;
+  });
+}
+
 const isDuplicate = (member, members) => {
   return members.some( mem => (
     mem.phone.value === member.phone.value ||
@@ -85,11 +99,32 @@ const anyFieldEmpty = (member) => {
   });
 }
 
-const didPassSanityCheck = (member, members) => {
-  if(anyFieldEmpty(member) || isDuplicate(member, members)) return false;
+const isMemberValidForAdding = (member, members) => {
+  console.log( 'isAnyTextFieldInvalid: ',isAnyTextFieldInvalid(member))
+  if(
+    anyFieldEmpty(member) ||
+    isDuplicate(member, members) ||
+    isAnyTextFieldInvalid(member)
+  ) return false;
+
+  return true;
+}
+
+const isMemberValidForUpdating = (member) => {
+  console.log( 'isAnyTextFieldInvalid: ',isAnyTextFieldInvalid(member))
+  if(
+    anyFieldEmpty(member) ||
+    isAnyTextFieldInvalid(member)
+  ) return false;
 
   return true;
 }
 
 
-export default { memberDetails, updatedRoles, isTextInputValid, didPassSanityCheck };
+export default { 
+  memberDetails,
+  updatedRoles,
+  isTextInputValid,
+  isMemberValidForAdding,
+  isMemberValidForUpdating
+};

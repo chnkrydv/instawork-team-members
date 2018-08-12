@@ -7,18 +7,23 @@ import { addMember, updateMember, deleteMember,} from '../../store/actions';
 
 const ActionBar = (props) => {
   const { currentPage, editingMember, members, membersCount, addMember, updateMember, deleteMember } = props;
+  const { isMemberValidForAdding, isMemberValidForUpdating } = dataTemplate;
   const isAddMemberPage = currentPage === 'add-member';
   const isEditMemberPage = currentPage === 'edit-member';
 
   const onDelete = () => deleteMember(editingMember.key, membersCount - 1);
   const onSave = () => {    
     if(isAddMemberPage) {
-      if(!dataTemplate.didPassSanityCheck(editingMember, members)) return;
+      if(!isMemberValidForAdding(editingMember, members)) return;
       
       editingMember.key = getNewKey();
       addMember(editingMember, members, membersCount + 1)
     };
-    if(isEditMemberPage) updateMember(editingMember.key, editingMember, membersCount);
+    if(isEditMemberPage) {
+      if(!isMemberValidForUpdating(editingMember)) return;
+      
+      updateMember(editingMember.key, editingMember, membersCount);
+    }
   };
 
 

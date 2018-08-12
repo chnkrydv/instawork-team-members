@@ -34,10 +34,10 @@ const inputFieldsType = {
 }
 
 Info.propTypes = {
-  firstName: PropTypes.objectOf(inputFieldsType),
-  lastName: PropTypes.objectOf(inputFieldsType),
-  email: PropTypes.objectOf(inputFieldsType),
-  phone: PropTypes.objectOf(inputFieldsType),
+  firstName: PropTypes.shape(inputFieldsType),
+  lastName: PropTypes.shape(inputFieldsType),
+  email: PropTypes.shape(inputFieldsType),
+  phone: PropTypes.shape(inputFieldsType),
   infoChange: PropTypes.func.isRequired,
   validateInfo: PropTypes.func.isRequired
 }
