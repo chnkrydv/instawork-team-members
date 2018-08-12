@@ -69,7 +69,6 @@ const isAnyTextFieldInvalid = (editingMember) => {
     let value = editingMember[key].value;
     if(key === 'firstName' || key === 'lastName') return !aValidName(value);
     if(key === 'email') {
-      console.log('ofTypeEmail(value); ', ofTypeEmail(value))
       return !ofTypeEmail(value);
     }
     if(key === 'phone') return !ofTypePhone(value);
@@ -100,7 +99,6 @@ const anyFieldEmpty = (member) => {
 }
 
 const isMemberValidForAdding = (member, members) => {
-  console.log( 'isAnyTextFieldInvalid: ',isAnyTextFieldInvalid(member))
   if(
     anyFieldEmpty(member) ||
     isDuplicate(member, members) ||
@@ -111,7 +109,6 @@ const isMemberValidForAdding = (member, members) => {
 }
 
 const isMemberValidForUpdating = (member) => {
-  console.log( 'isAnyTextFieldInvalid: ',isAnyTextFieldInvalid(member))
   if(
     anyFieldEmpty(member) ||
     isAnyTextFieldInvalid(member)
