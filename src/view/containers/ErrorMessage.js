@@ -17,8 +17,8 @@ const ErrorMessage = ({ errorMessage, hideErrorMessage }) => {
 }
 
 ErrorMessage.propTypes = {
-  errorMessage: PropTypes.string.isRequired(),
-  hideErrorMessage: PropTypes.func.isRequired()
+  errorMessage: PropTypes.string.isRequired,
+  hideErrorMessage: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
