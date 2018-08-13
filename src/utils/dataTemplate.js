@@ -99,22 +99,22 @@ const anyFieldEmpty = (member) => {
 }
 
 const isMemberValidForAdding = (member, members) => {
-  if(
-    anyFieldEmpty(member) ||
-    isDuplicate(member, members) ||
-    isAnyTextFieldInvalid(member)
-  ) return false;
+  const fieldEmpty = anyFieldEmpty(member);
+  const duplicate = isDuplicate(member, members);
+  const textFieldInvalid = isAnyTextFieldInvalid(member);
 
-  return true;
+  if(fieldEmpty || duplicate || textFieldInvalid) return { fieldEmpty, duplicate, textFieldInvalid, value: false };
+
+  return { value: true };
 }
 
 const isMemberValidForUpdating = (member) => {
-  if(
-    anyFieldEmpty(member) ||
-    isAnyTextFieldInvalid(member)
-  ) return false;
+  const fieldEmpty = anyFieldEmpty(member);
+  const textFieldInvalid = isAnyTextFieldInvalid(member);
 
-  return true;
+  if(fieldEmpty || textFieldInvalid) return { fieldEmpty, textFieldInvalid, value: false };
+
+  return { value: true };
 }
 
 

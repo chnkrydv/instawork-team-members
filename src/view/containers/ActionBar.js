@@ -3,27 +3,42 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { getNewKey, dataTemplate } from '../../utils/';
-import { addMember, updateMember, deleteMember,} from '../../store/actions';
+import { addMember, updateMember, deleteMember, showErrorMessage } from '../../store/actions';
 
 const ActionBar = (props) => {
-  const { currentPage, editingMember, members, membersCount, addMember, updateMember, deleteMember } = props;
+  const { currentPage, editingMember, members, membersCount, addMember, updateMember, deleteMember, showErrorMessage } = props;
   const { isMemberValidForAdding, isMemberValidForUpdating } = dataTemplate;
   const isAddMemberPage = currentPage === 'add-member';
   const isEditMemberPage = currentPage === 'edit-member';
 
-  const onDelete = () => deleteMember(editingMember.key, membersCount - 1);
-  const onSave = () => {    
-    if(isAddMemberPage) {
-      if(!isMemberValidForAdding(editingMember, members)) return;
-      
-      editingMember.key = getNewKey();
-      addMember(editingMember, members, membersCount + 1)
-    };
-    if(isEditMemberPage) {
-      if(!isMemberValidForUpdating(editingMember)) return;
-      
-      updateMember(editingMember.key, editingMember, membersCount);
+  const add = (member, members, membersCount) => {
+    const validForAdding = isMemberValidForAdding(member, members);
+    if(!validForAdding.value) {
+      const errMessage = validForAdding.duplicate
+        ? 'A member with same email or phone number already exists'
+        : 'Some of the fields are empty or invalid'
+      showErrorMessage(errMessage);
+      return;
     }
+    
+    member.key = getNewKey();
+    addMember(member, members, membersCount + 1)
+  }
+  const update = (memberKey, member, membersCount) => {
+    const validForUpdating = isMemberValidForUpdating(member);
+    if(!validForUpdating.value) {
+      const errMessage = 'Some of the fields are empty or invalid';
+      showErrorMessage(errMessage);
+      return;
+    }
+    
+    updateMember(memberKey, member, membersCount);
+  }
+
+  const onDelete = () => deleteMember(editingMember.key, membersCount - 1);
+  const onSave = () => {
+    if(isAddMemberPage) add(editingMember, members, membersCount + 1);      
+    if(isEditMemberPage) update(editingMember.key, editingMember, membersCount);
   };
 
 
@@ -64,6 +79,7 @@ const mapDispatchToProps = dispatch => ({
   addMember: (member, members, membersCount) => dispatch(addMember(member, members, membersCount)),
   updateMember: (key, member, membersCount) => dispatch(updateMember(key, member, membersCount)),
   deleteMember: (key, membersCount) => dispatch(deleteMember(key, membersCount)),
+  showErrorMessage: (message) => dispatch(showErrorMessage(message))
 })
 
 

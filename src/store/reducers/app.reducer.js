@@ -1,10 +1,11 @@
 const initState = {
   title: 'Team Members',
   subtitle: 'You have 0 team member',
-  currentPage: 'team'
+  currentPage: 'team',
+  errorMessage: ''
 }
 
-const getSubtitleForTeamPage = (membersCount) =>{
+const getSubtitleForTeamPage = (membersCount) => {
   return `You have ${membersCount} team member${membersCount > 1 ? 's' : ''}`;
 }
 
@@ -34,6 +35,16 @@ const app = (state = initState, action) => {
         subtitle: getSubtitleForTeamPage(action.membersCount),
         currentPage: 'team'
       };
+    case 'SHOW_ERROR_MESSAGE':
+      return {
+        ...state,
+        errorMessage: action.message
+      }
+    case 'HIDE_ERROR_MESSAGE':
+      return {
+        ...state,
+        errorMessage: ''
+      }
     default:
       return state;
   }

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import './root.css';
 import { Team, Member } from './pages/';
+import { ErrorMessage } from '../view/containers/';
 
 const Root = ({ currentPage }) => {
   const getPage = () => currentPage === 'team' ? (<Team />) : (<Member />);
@@ -10,6 +11,7 @@ const Root = ({ currentPage }) => {
   return (
     <div className="root">
       {getPage()}
+      <ErrorMessage />
     </div>
   );
 }
