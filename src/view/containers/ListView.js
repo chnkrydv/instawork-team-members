@@ -2,20 +2,24 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { stringer } from '../../utils/';
 import { ListTile } from '../components';
 import { gotoEditMemberPage } from '../../store/actions';
 
 const ListView = ({ members, gotoEditMemberPage }) => {
+  const { capitalizer } = stringer;
+  const getHeader = (firstName, lastName, isAdmin) =>
+    capitalizer(firstName) + ' ' + capitalizer(lastName) + (isAdmin ? ' (admin)' : '');
+
+
   return (
     <Fragment>
       {members.map( (member, i) => (
         <ListTile
           key={i}
-          isAdmin={member.isAdmin}
-          firstName={member.firstName.value}
-          lastName={member.lastName.value}
-          phone={member.phone.value}
-          email={member.email.value}
+          header={getHeader(member.firstName.value, member.lastName.value, member.isAdmin)}
+          firstSubheader={member.phone.value}
+          secondSubheader={member.email.value}
           onClick={() => gotoEditMemberPage(member)}
         />
       ))}
